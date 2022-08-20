@@ -15,6 +15,7 @@ model User {
   updateAt DateTime @updatedAt
   email String @unique
   hashedPassword String
+  tasks Task[]
 }
 
 model Task {
@@ -23,4 +24,6 @@ model Task {
   updateAt DateTime @updatedAt
   title String
   description String?
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade) 
 }
